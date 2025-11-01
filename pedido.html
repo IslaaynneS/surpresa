@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido de Namoro 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, #fd0606, #3a0204);
+  transition: background 2s;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  backdrop-filter: blur(8px);
+  max-width: 420px;
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #ffe3ec;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+button {
+  background: #fff;
+  color: #ff4e88;
+  border: none;
+  padding: 12px 25px;
+  margin: 10px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff4e88;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.hidden {
+  display: none;
+}
+
+.float-item {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  font-size: 20px;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    top: 100%;
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    top: -50px;
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container" id="card">
+  <h1>💻 Pedido de Namoro 💌</h1>
+  <p id="mensagem">
+    Entre todos os códigos do universo, você é a linha que faltava no meu coração. 💞<br><br>
+    Aceita namorar comigo?
+  </p>
+  <button id="sim">Sim 💖</button>
+  <button id="nao">Não 😅</button>
+  <button id="proximo" class="hidden">Próxima Surpresa 💌</button>
+</div>
+
+<script>
+const msg = document.getElementById('mensagem');
+const btnSim = document.getElementById('sim');
+const btnNao = document.getElementById('nao');
+const btnProximo = document.getElementById('proximo');
+
+// Função para criar corações e flores subindo
+function criarFloresECoracoes() {
+  const itens = ['💖','🌸','💗','🌺','💞','🌷','💘','🌹'];
+  const item = document.createElement('div');
+  item.classList.add('float-item');
+  item.innerText = itens[Math.floor(Math.random() * itens.length)];
+  item.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+  item.style.fontSize = (Math.random() * 28 + 16) + 'px';
+  item.style.animationDuration = (Math.random() * 4 + 4) + 's';
+  document.body.appendChild(item);
+  setTimeout(() => item.remove(), 6000);
+}
+
+// Inicia corações e flores assim que a página carrega
+for(let i=0; i<50; i++) criarFloresECoracoes();
+setInterval(criarFloresECoracoes, 300);
+
+// Botão Sim
+btnSim.addEventListener('click', () => {
+  msg.innerHTML = `
+    🎉 Parabéns! <br><br>
+    <b>Status: NAMORANDO 💞</b><br><br>
+    <i>Você será minha eternidade em instantes, minha cor favorita em todos os quadros, meu tudo em cada verso que eu ainda vou escrever.💘</i>
+  `;
+  btnSim.classList.add('hidden');
+  btnNao.classList.add('hidden');
+  btnProximo.classList.remove('hidden');
+
+  for(let i=0; i<100; i++) criarFloresECoracoes();
+  setInterval(criarFloresECoracoes, 300);
+});
+
+// Botão Não foge
+btnNao.addEventListener('mouseover', () => {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 100);
+  btnNao.style.position = 'absolute';
+  btnNao.style.left = x + 'px';
+  btnNao.style.top = y + 'px';
+});
+
+// Botão Próxima surpresa
+btnProximo.addEventListener('click', () => {
+  window.location.href = 'euteamo.html';
+});
+</script>
+
+</body>
+</html>
